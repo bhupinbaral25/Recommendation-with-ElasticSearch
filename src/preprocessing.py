@@ -6,13 +6,13 @@ from nltk.stem import PorterStemmer
 
 nltk.download('stopwords')
 
-def clean_sentences(sentence : str):
+def clean_sentences(sentence : str) -> str:
     """Take the raw sentence and clean it by removing stopwords and numbers 
     Args:
 	sentence (str): sentence to be cleaned
 
 	Returns:
-	_type_: list
+	_type_: str
     """ 
     ps = PorterStemmer()
     sentence = re.sub(r'[0-9]', ' ', sentence)    

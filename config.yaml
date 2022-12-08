@@ -1,0 +1,6 @@
+ELASTIC_ENDPOINT: "http://localhost:9200"
+ELASTIC_USER:
+ELASTIC_PASSWORD:
+ELASTIC_INDEX: "my_index"
+MODEL_NAME: 
+DATA_PATH: "data/movie.csv"
