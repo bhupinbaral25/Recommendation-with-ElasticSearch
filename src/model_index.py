@@ -1,5 +1,5 @@
-from utils import cfg, ES
-from utils import error_handler
+from src.utils import cfg, ES
+from src.utils import error_handler
 
 @error_handler
 def create_index():
@@ -24,7 +24,7 @@ def create_index():
             }
         },
     }
-    ES.indices.create(index=cfg['index'], body=model_body)
+    ES.indices.create(index=cfg['ELASTIC_INDEX'], body=model_body)
 
 def insert_in_elastic(data):
     """
@@ -32,5 +32,5 @@ def insert_in_elastic(data):
     """
     if not ES.indices.exists(index=cfg['index']):
         create_index()
-    ES.index(index=cfg['index'], body=data)
+    ES.index(index=cfg['ELASTIC_INDEX'], body=data)
 

@@ -1,10 +1,11 @@
-from src.utils import error_handler, cfg, ES
+from src.utils import error_handler, cfg, ES, MODEL
 
 @error_handler
-def search_result(query_vector, top_k: int=10):
+def search_result(processed_query, top_k: int=10):
     """
     Search for the query in elastic search using query vector and recommend the similar movie.
     """
+    query_vector = MODEL.encode(processed_query).tolist()
     search_result = {
 	"query": {
 	    "script_score": {
