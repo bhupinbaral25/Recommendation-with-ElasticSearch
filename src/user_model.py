@@ -8,4 +8,4 @@ class UserQuery(BaseModel):
 
 class OutputResponse(BaseModel):
     movie_name: str
-    genre: str
+    genra: str

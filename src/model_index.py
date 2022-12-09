@@ -1,5 +1,5 @@
 from src.utils import cfg, ES
-from src.utils import error_handler
+from src.custom_decorator import error_handler
 
 @error_handler
 def create_index():
@@ -30,7 +30,7 @@ def insert_in_elastic(data):
     """
     Insert the data in the elastic search.
     """
-    if not ES.indices.exists(index=cfg['index']):
+    if not ES.indices.exists(index=cfg['ELASTIC_INDEX']):
         create_index()
     ES.index(index=cfg['ELASTIC_INDEX'], body=data)
 
