@@ -1,7 +1,8 @@
 
 import pandas as pd
 
-from src.utils import cfg, error_handler, MODEL
+from src.utils import cfg, MODEL
+from src.custom_decorator import error_handler
 from src.model_index import insert_in_elastic
 from src.preprocessing import clean_sentences
 
@@ -23,4 +24,5 @@ def create_data():
 
 if __name__ == "__main__":
     create_data()
+
 
