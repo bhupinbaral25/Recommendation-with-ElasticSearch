@@ -1,0 +1,37 @@
+version: '3.4'
+services:
+  elastic-search:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    container_name: eslastic-search
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - elastic
+
+  fast-api:
+    container_name: fastapi
+    build: .
+    ports:
+      - 8000:8000
+    depends_on:
+      - elastic-search
+    networks:
+      - elastic
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
